@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ready?</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:linear-gradient(135deg,#ffd6ec,#ffb6d9);
+font-family:'Poppins',sans-serif;
+overflow:hidden;
+}
+
+/* center content */
+
+.container{
+text-align:center;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+/* title */
+
+h1{
+font-family:'Pacifico',cursive;
+font-size:44px;
+color:#ff2b7a;
+margin-bottom:30px;
+}
+
+/* buttons */
+
+button{
+padding:12px 26px;
+margin:10px;
+border:none;
+border-radius:25px;
+background:#ff4da6;
+color:white;
+font-size:17px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff1f85;
+transform:scale(1.08);
+}
+
+/* message */
+
+.message{
+display:none;
+font-size:20px;
+color:#ff2b7a;
+margin-top:20px;
+animation:fade 0.5s;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* floating hearts */
+
+.heart{
+position:absolute;
+color:#ff4da6;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+/* sparkles */
+
+.spark{
+position:absolute;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+animation:spark 3s linear infinite;
+}
+
+@keyframes spark{
+from{opacity:1;}
+to{opacity:0;}
+}
+
+/* secret heart */
+
+.secretHeart{
+position:absolute;
+top:20px;
+right:25px;
+font-size:28px;
+cursor:pointer;
+}
+
+.secretMsg{
+display:none;
+position:absolute;
+top:80px;
+right:20px;
+background:white;
+padding:10px 15px;
+border-radius:12px;
+color:#ff2b7a;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="secretHeart" onclick="secret()">💖</div>
+<div id="secretText" class="secretMsg">hehe you foundd the secrett .. you loookk cute when youh smile so keep smiling !! ✨</div>
+
+<div class="container">
+
+<h1>Ready ma'am?</h1>
+
+<button onclick="goDesmos()">Yes</button>
+<button id="noBtn" onclick="no()">No</button>
+
+<p id="noMsg" class="message">
+no bolne ka koi fayeda nahi hihih &lt;3
+</p>
+
+</div>
+
+<script>
+
+/* yes button */
+
+function goDesmos(){
+window.open("https://www.desmos.com/calculator/lhi5xv4zx5","_blank");
+}
+
+/* no button */
+
+function no(){
+document.getElementById("noBtn").style.display="none";
+document.getElementById("noMsg").style.display="block";
+}
+
+/* secret heart */
+
+function secret(){
+document.getElementById("secretText").style.display="block";
+}
+
+/* floating hearts */
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(10+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove()},6000);
+}
+
+setInterval(createHeart,500);
+
+/* sparkles */
+
+function createSpark(){
+const spark=document.createElement("div");
+spark.classList.add("spark");
+
+spark.style.left=Math.random()*100+"vw";
+spark.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(spark);
+
+setTimeout(()=>{spark.remove()},3000);
+}
+
+setInterval(createSpark,200);
+
+</script>
+
+</body>
+</html>
